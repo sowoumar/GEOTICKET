@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GEOTICKET</string>
+    <string name="connecter">Se connecter</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="login">login</string>
+    <string name="hello">Bonjour</string>
+</resources>
