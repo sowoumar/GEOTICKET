@@ -19,7 +19,7 @@ public class TicketsDataSourceDAO {
     private SQLiteDatabase database;
     private DatabaseSQLiteHelper dbHelper;
     private String[] allColumns = {DatabaseSQLiteHelper.COLUMN_ID,
-            DatabaseSQLiteHelper.COLUMN_TICKET};
+            DatabaseSQLiteHelper.COLUMN_TICKET,DatabaseSQLiteHelper.COLUMN_PRIX};
 
     public TicketsDataSourceDAO(Context context) {
         dbHelper = new DatabaseSQLiteHelper(context);
@@ -33,28 +33,29 @@ public class TicketsDataSourceDAO {
         dbHelper.close();
     }
 
-    public Ticket createComment(String ticket) {
+    public Ticket createTicket(String ticket) {
         ContentValues values = new ContentValues();
         values.put(DatabaseSQLiteHelper.COLUMN_TICKET, ticket);
+        values.put(DatabaseSQLiteHelper.COLUMN_PRIX, "TARIF 1");
         long insertId = database.insert(DatabaseSQLiteHelper.TABLE_VENTES, null,
                 values);
         Cursor cursor = database.query(DatabaseSQLiteHelper.TABLE_VENTES,
                 allColumns, DatabaseSQLiteHelper.COLUMN_ID + " = " + insertId, null,
                 null, null, null);
         cursor.moveToFirst();
-        Ticket newTicket = cursorToComment(cursor);
+        Ticket newTicket = cursorToTicket(cursor);
         cursor.close();
         return newTicket;
     }
 
-    public void deleteComment(Ticket ticket) {
+    public void deleteTicket(Ticket ticket) {
         long id = ticket.getId();
         System.out.println("Ticket deleted with id: " + id);
         database.delete(DatabaseSQLiteHelper.TABLE_VENTES, DatabaseSQLiteHelper.COLUMN_ID
                 + " = " + id, null);
     }
 
-    public List<Ticket> getAllComments() {
+    public List<Ticket> getAllTickets() {
         List<Ticket> tickets = new ArrayList<Ticket>();
 
         Cursor cursor = database.query(DatabaseSQLiteHelper.TABLE_VENTES,
@@ -62,7 +63,7 @@ public class TicketsDataSourceDAO {
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            Ticket ticket = cursorToComment(cursor);
+            Ticket ticket = cursorToTicket(cursor);
             tickets.add(ticket);
             cursor.moveToNext();
         }
@@ -71,10 +72,11 @@ public class TicketsDataSourceDAO {
         return tickets;
     }
 
-    private Ticket cursorToComment(Cursor cursor) {
+    private Ticket cursorToTicket(Cursor cursor) {
         Ticket ticket = new Ticket();
         ticket.setId(cursor.getLong(0));
         ticket.setTicket(cursor.getString(1));
+        ticket.setPrix(cursor.getString(2));
         return ticket;
     }
 }

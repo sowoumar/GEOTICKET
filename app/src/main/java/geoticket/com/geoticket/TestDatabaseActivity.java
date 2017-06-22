@@ -18,12 +18,12 @@ public class TestDatabaseActivity extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.comptability_activity);
 
         datasource = new TicketsDataSourceDAO(this);
         datasource.open();
 
-        List<Ticket> values = datasource.getAllComments();
+        List<Ticket> values = datasource.getAllTickets();
 
         // utilisez SimpleCursorAdapter pour afficher les
         // éléments dans une ListView
@@ -33,7 +33,7 @@ public class TestDatabaseActivity extends ListActivity {
     }
 
     // Sera appelée par l'attribut onClick
-    // des boutons déclarés dans main.xml
+    // des boutons déclarés dans comptability_activitytability_activity.xml
     public void onClick(View view) {
         @SuppressWarnings("unchecked")
         ArrayAdapter<Ticket> adapter = (ArrayAdapter<Ticket>) getListAdapter();
@@ -43,13 +43,13 @@ public class TestDatabaseActivity extends ListActivity {
                 String[] comments = new String[]{"Cool", "Very nice", "Hate it"};
                 int nextInt = new Random().nextInt(3);
                 // enregistrer le nouveau commentaire dans la base de données
-                ticket = datasource.createComment(comments[nextInt]);
+                ticket = datasource.createTicket(comments[nextInt]);
                 adapter.add(ticket);
                 break;
             case R.id.delete:
                 if (getListAdapter().getCount() > 0) {
                     ticket = (Ticket) getListAdapter().getItem(0);
-                    datasource.deleteComment(ticket);
+                    datasource.deleteTicket(ticket);
                     adapter.remove(ticket);
                 }
                 break;

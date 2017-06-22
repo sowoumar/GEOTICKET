@@ -15,6 +15,7 @@ public class DatabaseSQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_VENTES = "ventes";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_TICKET = "ticket";
+    public static final String COLUMN_PRIX= "prix";
 
     private static final String DATABASE_NAME = "ventes.db";
     private static final int DATABASE_VERSION = 1;
@@ -23,6 +24,7 @@ public class DatabaseSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE = "create table "
             + TABLE_VENTES + "(" + COLUMN_ID
             + " integer primary key autoincrement, " + COLUMN_TICKET
+            + " text not null, " + COLUMN_PRIX
             + " text not null);";
 
     public DatabaseSQLiteHelper(Context context) {

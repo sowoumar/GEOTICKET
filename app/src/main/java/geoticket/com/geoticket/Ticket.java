@@ -1,5 +1,7 @@
 package geoticket.com.geoticket;
 
+import java.util.Date;
+
 /**
  * Created by oumar on 22/06/17.
  */
@@ -7,6 +9,25 @@ package geoticket.com.geoticket;
 public class Ticket {
     private long id;
     private String ticket;
+
+    private String prix;
+    private Date dateVente;
+
+    public Date getDateVente() {
+        return dateVente;
+    }
+
+    public void setDateVente(Date dateVente) {
+        this.dateVente = dateVente;
+    }
+
+    public String getPrix() {
+        return prix;
+    }
+
+    public void setPrix(String prix) {
+        this.prix = prix;
+    }
 
     public long getId() {
         return id;
