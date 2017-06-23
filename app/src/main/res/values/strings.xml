@@ -4,4 +4,16 @@
     <string name="mot_de_passe">Mot de passe</string>
     <string name="login">login</string>
     <string name="hello">Bonjour</string>
+    <string name="vente">VENTE</string>
+    <string name="comptabilite">COMPTABILITE</string>
+    <string name="tarif_1">TARIF 1</string>
+    <string name="tarif_2">TARIF 2</string>
+    <string name="tarif_3">TARIF 3</string>
+    <string name="tarif_4">TARIF 4</string>
+    <string name="tarif_5">TARIF 5</string>
+    <string name="tarif_6">TARIF 6</string>
+    <string name="tarif_7">TARIF 7</string>
+    <string name="tarif_8">TARIF 8</string>
+    <string name="tarif_9">TARIF 9</string>
+    <string name="tarif_10">TARIF 10</string>
 </resources>

@@ -14,7 +14,12 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void testDatabase(View view) {
-        Intent intent =  new Intent(this, TestDatabaseActivity.class);
+        Intent intent =  new Intent(this, ComptabilityActivity.class);
         startActivity(intent);
     }
+	
+	public void gotoselectiontarif (View view) {
+		Intent intent = new Intent(this,SelectionTarifActivity.class);
+		startActivity(intent);
+	}
 }
