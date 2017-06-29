@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">GEOTICKET</string>
+    <string name="app_name">Geoticket</string>
     <string name="connecter">Se connecter</string>
     <string name="mot_de_passe">Mot de passe</string>
-    <string name="login">login</string>
+    <string name="login">Login</string>
     <string name="hello">Bonjour</string>
     <string name="vente">VENTE</string>
     <string name="comptabilite">COMPTABILITE</string>
@@ -16,4 +16,7 @@
     <string name="tarif_8">TARIF 8</string>
     <string name="tarif_9">TARIF 9</string>
     <string name="tarif_10">TARIF 10</string>
+    <string name="fin_des_ventes">Fin des ventes</string>
+    <string name="message_cloture_ventes">Êtes vous sûr de vouloir clôturer les ventes ?</string>
+    <string name="titre_modal_cloture_vente">Fermeture des ventes</string>
 </resources>
