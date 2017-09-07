@@ -7,6 +7,8 @@ import android.view.View;
 
 import java.util.zip.Inflater;
 
+import geoticket.com.geoticket.printproject.BluetoothPrinterActivity;
+
 public class MenuActivity extends AppCompatActivity {
 
     @Override
@@ -22,7 +24,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 	
 	public void gotoselectiontarif (View view) {
-		Intent intent = new Intent(this,SelectionTarifActivity.class);
+		Intent intent = new Intent(this,BluetoothPrinterActivity.class);
 		startActivity(intent);
 	}
 }

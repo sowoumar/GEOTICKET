@@ -2,6 +2,7 @@ package geoticket.com.geoticket;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.bluetooth.BluetoothAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +25,7 @@ import java.util.List;
 
 public class SelectionTarifActivity extends ListActivity {
 
-    TicketsDataSourceDAO datasource;
+    private  TicketsDataSourceDAO datasource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

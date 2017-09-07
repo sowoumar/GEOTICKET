@@ -1,6 +1,7 @@
 package geoticket.com.geoticket;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText mLoginView;
     private EditText mPasswordView;
-    BluetoothAdapter bluetoothAdapter;
+    private BluetoothAdapter bluetoothAdapter;
     private int REQUEST_CODE_ENABLE_BLUETOOTH = 0;
 
     @Override
@@ -39,6 +40,13 @@ public class LoginActivity extends AppCompatActivity {
         if (!bluetoothAdapter.isEnabled()) {
             Intent enableBlueTooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBlueTooth, REQUEST_CODE_ENABLE_BLUETOOTH);
+
+        } else {
+            for (BluetoothDevice bluetoothDevice : bluetoothAdapter.getBondedDevices()) {
+                if (bluetoothDevice.getName().equals("BlueTooth Printer")) {
+                    System.out.println(bluetoothDevice.getName());
+                }
+            }
 
         }
     }
