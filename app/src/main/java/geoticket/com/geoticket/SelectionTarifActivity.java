@@ -23,9 +23,12 @@ import java.io.File;
 import java.util.Date;
 import java.util.List;
 
+import geoticket.com.geoticket.printproject.BluetoothPrinterActivity;
+import geoticket.com.geoticket.printproject.PrintReceipt;
+
 public class SelectionTarifActivity extends ListActivity {
 
-    private  TicketsDataSourceDAO datasource;
+    private TicketsDataSourceDAO datasource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +63,7 @@ public class SelectionTarifActivity extends ListActivity {
             ticket.setTicket(TARIF.TARIF1.getPrice());
             ticket = datasource.createTicket(ticket);
             adapter.add(ticket);
-            imprimerTicket();
+            imprimerTicket(ticket);
             Toast.makeText(this, "Tarif 1 imprimé !", Toast.LENGTH_SHORT).show();
         } else if (i == R.id.tarif2) {
             ticket.setPrix(TARIF.TARIF2.getName());
@@ -99,7 +102,7 @@ public class SelectionTarifActivity extends ListActivity {
             ticket.setTicket(TARIF.TARIF6.getPrice());
             ticket = datasource.createTicket(ticket);
             adapter.add(ticket);
-            imprimerTicket();
+            imprimerTicket(ticket);
             Toast.makeText(this, "Tarif 6 imprimé !", Toast.LENGTH_SHORT).show();
 
         } else if (i == R.id.tarif7) {
@@ -138,25 +141,13 @@ public class SelectionTarifActivity extends ListActivity {
         adapter.notifyDataSetChanged();
     }
 
+    private void imprimerTicket(Ticket ticket) {
+        PrintReceipt.printBillFromOrder(SelectionTarifActivity.this,ticket);
+    }
+
     private void imprimerTicket() {
 
-        /*LayoutInflater inflater = LayoutInflater.from(SelectionTarifActivity.this); // 1
-        View theInflatedView = inflater.inflate(R.layout.ticket, null);
-        EditText date = (EditText) findViewById(R.id.date);
-        EditText tarif = (EditText) findViewById(R.id.tarif);*/
-
-
-        PDFAsset pdfAsset4x6 = new PDFAsset("4x6.pdf", true);
-
-        PrintItem printItemDefault = new PDFPrintItem(PrintItem.ScaleType.CENTER, pdfAsset4x6);
-
-        PrintJobData printJobData = new PrintJobData(SelectionTarifActivity.this, printItemDefault);
-
-        printJobData.setJobName("Example");
-
-        PrintUtil.setPrintJobData(printJobData);
-
-        PrintUtil.print(SelectionTarifActivity.this);
+       // PrintReceipt.printBillFromOrder(SelectionTarifActivity.this);
     }
 
     /**

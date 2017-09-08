@@ -25,6 +25,7 @@ import com.mocoo.hang.rtprinter.driver.HsBluetoothPrintDriver;
 import java.lang.ref.WeakReference;
 
 import geoticket.com.geoticket.R;
+import geoticket.com.geoticket.SelectionTarifActivity;
 
 /**
  * @author shohrab.uddin, RONGTA
@@ -115,6 +116,11 @@ public class BluetoothPrinterActivity extends AppCompatActivity {
         // Initialize HsBluetoothPrintDriver class to perform bluetooth connections
         BLUETOOTH_PRINTER = HsBluetoothPrintDriver.getInstance();//
         BLUETOOTH_PRINTER.setHandler(new BluetoothHandler(BluetoothPrinterActivity.this));
+    }
+
+    public void vendre(View view) {
+        Intent intent = new Intent(this,SelectionTarifActivity.class);
+        startActivity(intent);
     }
 
     /**

@@ -3,6 +3,8 @@ package geoticket.com.geoticket.printproject;
 import android.content.Context;
 
 import geoticket.com.geoticket.R;
+import geoticket.com.geoticket.SelectionTarifActivity;
+import geoticket.com.geoticket.Ticket;
 import geoticket.com.geoticket.model.SalesModel;
 import geoticket.com.geoticket.utility.Utility;
 
@@ -119,5 +121,38 @@ public class PrintReceipt {
 		BluetoothPrinterActivity.BLUETOOTH_PRINTER.LF();
 		BluetoothPrinterActivity.BLUETOOTH_PRINTER.LF();
 		return true;
+	}
+
+	public static void printBillFromOrder(SelectionTarifActivity selectionTarifActivity, Ticket ticket) {
+		//LF = Line feed
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.Begin();
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.LF();
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.LF();
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.SetAlignMode((byte) 1);//CENTER
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.SetLineSpacing((byte) 30);	//30 * 0.125mm
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.SetFontEnlarge((byte) 0x00);//normal
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.BT_Write(selectionTarifActivity.getString(R.string.nom_societe));
+
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.LF();
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.CODEBAR("03041983");
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.SetAlignMode((byte) 1);
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.SetLineSpacing((byte) 30);
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.SetFontEnlarge((byte) 0x00);
+
+		//BT_Write() method will initiate the printer to start printing.
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.BT_Write("Mbaye Malick" +
+				"\nOrder No: " + "1245784256454" +
+				"\nBill No: " + "554741254854" +
+				"\nTrn. Date:" + "29/12/2015" +
+				"\n" + "Mr. Mbaye");
+
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.LF();
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.BT_Write(selectionTarifActivity.getResources().getString(R.string.print_line));
+
+
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.BT_Write(ticket.getDateVente());
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.LF();
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.BT_Write(ticket.getId()+ ticket.getPrix());
+		BluetoothPrinterActivity.BLUETOOTH_PRINTER.LF();
 	}
 }
