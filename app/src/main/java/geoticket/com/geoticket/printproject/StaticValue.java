@@ -14,5 +14,5 @@ public class StaticValue {
     public static final String CURRENCY = "EUR";
     public static final double VAT = 10.00;
     public static final String VAT_REGISTRATION_NUMBER ="8877 BD9877";
-    public static final String BRANCH_ADDRESS ="70188, Stuttgart, Germany";
+    public static final String BRANCH_ADDRESS ="24051, Dakar, SENEGAL";
 }
